@@ -101,7 +101,7 @@ func loadFiles(files []*pack.File) (*pack.Pack, error) {
 			p.OutputTemplateFile = f
 
 		case strings.HasPrefix(f.Name, "templates/") &&
-			strings.HasSuffix(f.Name, ".nomad.tpl") ||
+			(strings.HasSuffix(name, ".nomad.tpl") || strings.HasSuffix(name, ".hcl.tpl")) ||
 			strings.Contains(f.Name, "templates/_"):
 			// The file is a pack template file. This catches both full Nomad
 			// object templates and helpers.
